@@ -7,11 +7,20 @@ use App\Http\Controllers\StadiumsController;
 // use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Artisan;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+Route::get('/run-migrations', function () {
+    abort_unless(
+        request('key') === env('MIGRATION_KEY'),
+        403
+    );
 
+    Artisan::call('migrate', ['--force' => true]);
+
+    return nl2br(Artisan::output());
+});
 Route::get('/dashboard', function () {
     session()->reflash();
     return match (Auth::user()->role) {
