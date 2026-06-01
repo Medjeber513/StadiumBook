@@ -6,7 +6,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="{{asset('css/home-page.css')}}">
+        <link rel="stylesheet" href="https://stadiumbook.onrender.com/css/home-page.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +72,7 @@
 
         @endif
     </body>
-<script src="{{asset('js/home-page.js')}}"></script>
+<script src="https://stadiumbook.onrender.com/js/home-page.js"></script>
 
 
 
