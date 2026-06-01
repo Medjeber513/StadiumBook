@@ -11,15 +11,10 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/run-migrations', function () {
-    abort_unless(
-        request('key') === env('MIGRATION_KEY'),
-        403
-    );
-
+Route::get('/migrate', function () {
     Artisan::call('migrate', ['--force' => true]);
 
-    return nl2br(Artisan::output());
+    return Artisan::output();
 });
 Route::get('/dashboard', function () {
     session()->reflash();
